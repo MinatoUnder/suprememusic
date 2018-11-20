@@ -24,8 +24,6 @@ const prefix = "1";
 /////////////////////////
 ////////////////////////
 
-client.on('ready',async () => { client.channels.find(ch => ch.id === "514193420378701834" && ch.type === 'voice').join(); });
-
 
 
 client.on('message', async msg =>{
@@ -356,5 +354,11 @@ client.on('ready', () => {
 client.user.setGame(`1play | Supreme Music`,"http://twitch.tv/Ninja")
 client.user.setStatus("dnd")
 });
+
+client.on('ready',async () => {
+  client.channels.find(ch => ch.id === "514193420378701834" && ch.type === 'voice').join();
+});
+
+
 
 client.login(process.env.BOT_TOKEN);
