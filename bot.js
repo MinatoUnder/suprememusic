@@ -355,8 +355,22 @@ client.user.setGame(`1play | Supreme Music`,"http://twitch.tv/Ninja")
 client.user.setStatus("dnd")
 });
 
-client.on('ready',async () => {
-  client.channels.find(ch => ch.id === "514193420378701834" && ch.type === 'voice').join();
+  client.on('message', message => {
+  if (!message.guild) return;
+
+  if (message.content === 'join') {
+	   if (message.author.id !== '415595760990552065') return message.reply(':no_entry: | This Command Only For Minato :fire: !')
+ if(!message.author.id === '415595760990552065') return;
+    if (message.member.voiceChannel) {
+      message.member.voiceChannel.join()
+        .then(connection => { 
+          message.reply('لقد دخلت الروم بنجاح !');
+        })
+        .catch(console.log);
+    } else {
+      message.reply('يجب ان تكون في روم صوتي');
+    }
+  }
 });
 
 
